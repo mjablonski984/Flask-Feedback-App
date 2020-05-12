@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Send Feedback</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2>Send Your Feedback</h2>
+    {% if message %}
+    <p class="message">{{ message | safe }}</p>
+    {% endif %}
+
+    <form action="/submit" method="POST">
+        <div class="form-group">
+            <p>Customer Name</p>
+            <input type="text" name="name" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+            <p>Email</p>
+            <input type="email" name="email" placeholder="Your email" />
+        </div>
+        <div class="form-group">
+            <p>How Did You Hear About Us</p>
+            <select name="source">
+                <option value="">Select Option</option>
+                <option value="search engine">Search Engine</option>
+                <option value="social media">Social Media</option>
+                <option value="word of mouth">Word of mouth</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group ">
+            <p>Rate our service</p>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" checked class="radio-btn hide" />
+                <label for="star5">☆</label>
+                <input type="radio" id="star4" name="rating" value="4" class="radio-btn hide" />
+                <label for="star4">☆</label>
+                <input type="radio" id="star3" name="rating" value="3" class="radio-btn hide" />
+                <label for="star3">☆</label>
+                <input type="radio" id="star2" name="rating" value="2" class="radio-btn hide" />
+                <label for="star2">☆</label>
+                <input type="radio" id="star1" name="rating" value="1" class="radio-btn hide" />
+                <label for="star1">☆</label>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>Comments about your experience</p>
+            <textarea name="comments" rows="10" placeholder="Tell us what you liked and/or did not like"></textarea>
+        </div>
+        <input type="submit" value="Submit" class="btn" />
+    </form>
+</div>
+
+{% endblock %}
